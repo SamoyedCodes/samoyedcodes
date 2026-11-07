@@ -7,18 +7,16 @@
 
 ## 📊 GitHub Stats & Trophies
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=samoyedcodes&show_icons=true&theme=nightowl&hide_border=true&count_private=true&cache_seconds=86400" alt="samoyedcodes's GitHub Stats" width="49%" />
+  <img src="https://github-readme-stats-dun-phi-46.vercel.app/api?username=samoyedcodes&show_icons=true&theme=nightowl&hide_border=true&count_private=true&cache_seconds=86400" alt="samoyedcodes's GitHub Stats" width="49%" />
   <img src="https://streak-stats.demolab.com/?user=samoyedcodes&theme=nightowl&hide_border=true&cache_seconds=86400" alt="samoyedcodes's GitHub Streak" width="49%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats-dun-phi-46.vercel.app/api?username=samoyedcodes&show_icons=true&theme=nightowl&hide_border=true&count_private=true&cache_seconds=86400" alt="samoyedcodes's GitHub Stats" width="49%" />
+  <img src="https://github-readme-stats-dun-phi-46.vercel.app/api/top-langs/?username=samoyedcodes&layout=compact&theme=nightowl&hide_border=true&langs_count=10&cache_seconds=86400" alt="Top Languages" />
 </p>
+
 <p align="center">
- <img src="https://github-profile-trophy-two-blue.vercel.app/api/top-langs/?username=samoyedcodes&layout=compact&theme=nightowl&hide_border=true&langs_count=10&cache_seconds=86400" alt="Top Languages" />
-</p>
-<p align="center">
-  <img height="280em" src="https://github-readme-activity-graph.vercel.app/graph?username=samoyedcodes&theme=nightowl&radius=10" alt="samoyedcodes's Activity Graph" />
+  <img src="https://github-profile-trophy-two-blue.vercel.app/?username=samoyedcodes&theme=nightowl&no-frame=true&no-bg=true&margin-w=4" alt="Ben's GitHub Trophies" />
 </p>
 
 ## 🛠️ Languages & Tools
