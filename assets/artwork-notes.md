@@ -2,7 +2,7 @@
 
 `samoyed-banner.png` was created with the built-in Imagegen tool, using the public avatar at https://github.com/SamoyedCodes as the dog and flower reference. The reference photograph is not included in this repository.
 
-The section headers are local SVG artwork with bitmap lettering and a pixel paw. They do not need web fonts.
+The section headings use native GitHub text and a local pixel paw ornament. The paw is reused from the original bitmap section artwork. Native text keeps the headings readable and gives GitHub meaningful automatic permalinks.
 
 ## Banner prompt
 
