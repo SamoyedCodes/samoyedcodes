@@ -17,13 +17,13 @@
   <a href="#contributions">Snake</a>
 </p>
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />About me</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />About me</h2>
 
 I'm Ben. I build things to fix problems I actually have, from a bot that handles internship applications to a sensor that tells me when the laundry is done.
 
 Most of my work is in Python and TypeScript, with some C++ when hardware gets involved.
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Projects</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />Projects</h2>
 
 ### [Intern-Bot](https://github.com/SamoyedCodes/Intern-Bot)
 
@@ -41,14 +41,14 @@ LightGBM forecasts of airport arrival capacity and delay risk for Autonomous SG 
 
 An ESP32 vibration sensor and Azure Functions dashboard that detect washing machine cycles.
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Toolbox</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />Toolbox</h2>
 
 - **Languages:** `Python` · `TypeScript` · `Java` · `R` · `SQL`
 - **Data & ML:** `pandas` · `NumPy` · `scikit-learn` · `Jupyter` · `Matplotlib`
 - **Cloud & hardware:** `AWS EC2` · `Azure` · `Vercel` · `Arduino / ESP32`
 - **Tools:** `Git` · `Playwright` · `pytest`
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />GitHub stats</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />GitHub stats</h2>
 
 Explore my [commit history](https://github.com/search?q=author%3ASamoyedCodes&type=commits&s=committer-date&o=desc) and [repositories](https://github.com/SamoyedCodes?tab=repositories) directly on GitHub.
 
@@ -66,12 +66,12 @@ Explore my [commit history](https://github.com/search?q=author%3ASamoyedCodes&ty
 
 <sub>Pixel cards: <a href="https://github.com/BaranDev/questlog-github-stats">questlog-github-stats</a>, art by Cevdet Baran Oral.</sub>
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Contributions</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />Contributions</h2>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/SamoyedCodes/samoyedcodes/output/github-snake.svg" alt="A snake eats Ben's GitHub contribution graph." width="100%" />
 </p>
 
-<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />More projects</h2>
+<h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />More projects</h2>
 
 **[Browse all my repositories →](https://github.com/SamoyedCodes?tab=repositories)**

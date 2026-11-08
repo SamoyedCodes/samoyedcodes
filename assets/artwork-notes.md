@@ -2,7 +2,7 @@
 
 `samoyed-banner.png` was created with the built-in Imagegen tool, using the public avatar at https://github.com/SamoyedCodes as the dog and flower reference. The reference photograph is not included in this repository.
 
-The section headings use native GitHub text and a local pixel paw ornament. The paw is reused from the original bitmap section artwork. Native text keeps the headings readable and gives GitHub meaningful automatic permalinks.
+The section headings use native GitHub text and `pixel-samoyed.svg`, a vector trace of the user-supplied standing Samoyed image. The original 35 × 30 pixel grid, pose and sampled colors are preserved; only the connected gray background is omitted. The file contains SVG paths with no embedded raster image and displays at 24px beside the headings. Native text keeps the headings readable and gives GitHub meaningful automatic permalinks.
 
 ## Banner prompt
 
