@@ -33,10 +33,6 @@ A macOS app that autofills internship applications and tracks each one from save
 
 Watches Poll Everywhere and votes for me, because I can't wake up for lecture.
 
-### [AITHENA](https://github.com/SamoyedCodes/SMULitHack)
-
-A local contract workspace built with React and FastAPI for SMU LIT Hack.
-
 ### [FlowCast](https://github.com/SamoyedCodes/flowcast)
 
 LightGBM forecasts of airport arrival capacity and delay risk for Autonomous SG 2026, Airbus Challenge #5.
@@ -48,11 +44,9 @@ An ESP32 vibration sensor and Azure Functions dashboard that detect washing mach
 <h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Toolbox</h2>
 
 - **Languages:** `Python` · `TypeScript` · `JavaScript` · `C++`
-- **Frontend:** `React` · `Vite` · `Tailwind CSS` · `HTML5` · `CSS3`
-- **Backend & desktop:** `FastAPI` · `Node.js` · `SQLite` · `Qt / PySide6`
 - **Data & ML:** `pandas` · `NumPy` · `scikit-learn` · `Jupyter` · `Matplotlib`
-- **Cloud & hardware:** `Azure` · `Vercel` · `Arduino / ESP32`
-- **Tools:** `Git` · `Playwright` · `pytest` · `Vitest` · `pnpm`
+- **Cloud & hardware:** `AWS EC2` · `Azure` · `Vercel` · `Arduino / ESP32`
+- **Tools:** `Git` · `Playwright` · `pytest`
 
 <h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />GitHub stats</h2>
 
