@@ -43,7 +43,7 @@ An ESP32 vibration sensor and Azure Functions dashboard that detect washing mach
 
 <h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Toolbox</h2>
 
-- **Languages:** `Python` · `TypeScript` · `JavaScript` · `C++`
+- **Languages:** `Python` · `TypeScript` · `Java` · `R` · `SQL`
 - **Data & ML:** `pandas` · `NumPy` · `scikit-learn` · `Jupyter` · `Matplotlib`
 - **Cloud & hardware:** `AWS EC2` · `Azure` · `Vercel` · `Arduino / ESP32`
 - **Tools:** `Git` · `Playwright` · `pytest`
