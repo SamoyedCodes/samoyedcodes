@@ -1,14 +1,96 @@
 # Animated Samoyed banner
 
-The README uses `../samoyed-banner.gif`: a 1200 × 400 GIF that loops every 16 seconds. The puppy starts with its breathing, tail movement, and blink; gets sleepy and yawns; folds its paws and plops down; naps for 4.5 seconds with gentle breathing; wakes, shifts its weight onto the front paws, lifts its hips into a four-legged stand, and settles back into the same idle drawing. The meadow sways and the stars twinkle at a lower update rate to keep the file below 3MB. The lettering stays still. The first and last frames match.
+The README uses `../samoyed-banner.gif`: a 1200 × 400 GIF that loops every 16 seconds. The puppy idles with a steady head, subtle chest/tail movement and a slow blink; gives a modest yawn; lowers itself into a soft landing; naps for about four seconds; wakes with a short stretch; then stands and sits gently. The extreme bow, pancake landing and standing overshoot are omitted. The timing eases into and out of each action. The meadow sways and the stars twinkle at a lower update rate to keep the file below 3MB. The lettering stays still. The first and last frames match.
 
 Readers with `prefers-reduced-motion: reduce` get the original `../samoyed-banner.png` through the README's `<picture>` element.
 
-The background and animation poses were created with the built-in Imagegen tool using the original banner as the reference. `background.png` is the clean background. The active `samoyed-sprites.png` has 24 keyframes in a six-column, four-row grid, covering idle through sleep and recovery in one consistent character family. The faint alpha matte is quantized to binary transparency when composing the GIF. Every pose shares the same ground baseline. The original `idle-sprites.png` and `sleep-sprites.png` remain as artwork references; the generator no longer switches between them.
+The background and animation poses were created with the built-in Imagegen tool using the original banner as the reference. `background.png` is the clean background. The active `gentle-sprites.png` has 24 keyframes in a six-column, four-row grid, covering idle through sleep and recovery with restrained deformation. During idle, the head layer and its placement come from the same neutral drawing. Breathing affects the chest and tail; blinking replaces only the eyelid strip, preventing upward head snaps. The generator extracts complete connected silhouettes into padded cells, so ears and tails can cross the source grid without being clipped or leaking into adjacent frames. The faint alpha matte is quantized to binary transparency when composing the GIF. Every pose shares the same ground baseline. The earlier sprite sheets remain as artwork references; the generator uses only the gentle sheet.
 
-To rebuild, run `python3 scripts/animate-banner.py` from the repository root with Pillow installed. The script checks the grid, a visible yawn tongue, the low sleeping silhouette, intermediate rise silhouettes, visible blink, character bounds, stationary lettering, loop seam, decoded GIF duration, and file size. One shared palette prevents color flicker and reserves a pink entry for the yawn. No API calls or credentials are needed to rebuild.
+To rebuild, run `python3 scripts/animate-banner.py` from the repository root with Pillow installed. The script checks the grid, a visible yawn tongue, the low sleeping silhouette, fixed idle head pixels, fixed head placement, visible blink, character bounds, stationary lettering, loop seam, decoded GIF duration, and file size. One shared palette prevents color flicker and reserves a pink entry for the yawn. No API calls or credentials are needed to rebuild.
 
-## Consistent character revision prompt
+## Gentle revision prompt
+
+Built-in Imagegen created `gentle-sprites.png` from the expressive sheet after the user requested less exaggeration and removal of the upward head snap.
+
+Use case: precise-object-edit. Edit target / character reference: this 6-column by 4-row pixel Samoyed animation sheet. Revise the 24 poses to be MUCH CALMER, with only about one third of the current squash/stretch intensity. Keep the cute white Samoyed, navy collar, pale periwinkle fur shadows, pixel style and same 24-pose order. It should feel like a relaxed real puppy with a touch of cartoon softness, not a rubbery slapstick character. Small believable anticipation, soft settling, gentle sleepy expressions. No dramatic head throws, enormous gape, pancake body, high-rump extreme bow, giant tail swings or big standing overshoot. A modest natural yawn and comfortable short stretch are enough.
+
+CRITICAL FIX FOR OPENING TWITCH: in frames 1, 2 and 3, keep the head, neck, nose, muzzle, ears, collar, head angle, head center, face proportions, feet and camera angle at EXACTLY THE SAME POSITION AND SCALE. Do NOT lift or tilt the head in idle. Copy the same head pixels into frames 1 and 2; only a tiny change to chest fur and tail tip for breathing. Frame 3 is an exact copy of frame 1 except eyelids closed in a slow blink. Nose and mouth stay fixed. The first three drawings are a quiet idle, not a head movement.
+
+Technical: exactly SIX equal SQUARE cells across and FOUR rows, 3:2 canvas. Real alpha transparency, empty background outside the dogs. No labels/grid/text/scenery/shadows outside dog. Each whole dog fully contained with 12px clear margins per cell; no neighboring fragments. Same fixed front/very slight three-quarter camera as reference, approximate physical dog size maintained, ground paws at 90% cell height. Neutral seated dog about 75% cell height. Lying dog low on its paws at same head size, not enlarged to fill its cell. Tail to viewer's left. Clean crisp pixel clusters and opaque fur, no speckles, haze, gradients or painterly noise.
+
+24 frames left-to-right, top-to-bottom:
+1. Relaxed neutral SEATED puppy, eyes open, friendly closed smile, head level and looking forward, ears upright naturally.
+2. EXACT same seated head/face/ears/neck and feet as 1; only chest fur gently fuller and tail tip nudged 1-2 pixels. Absolutely no head tilt or upward snap.
+3. EXACT same pose/head placement as 1 except eyes closed for a slow blink. Nose/muzzle remain at exactly same coordinates.
+4. Slightly sleepy eyelids; head remains nearly level, just a small forward nod, relaxed ears.
+5. Small yawn anticipation: chin tucks a little and shoulders relax; only 3-5% shortening, no curling into a ball.
+6. Yawn starts: mouth opens moderately, eyelids close, head begins a small backward arc.
+7. Comfortable natural YAWN: open dark mouth with small pink tongue, eyes closed, neck extends just 5-8%, head tipped back only slightly. No gigantic mouth or long giraffe neck.
+8. Yawn closes and head eases forward along the same small arc; ears softly follow.
+9. Content sleepy seated pose, head gently lowered, body retains natural proportions.
+10. Begins lying down: front elbows bend and chest lowers over planted paws, rump just a little higher.
+11. Lowers belly and hindquarters, paws forward, ears relaxed; a clear modest descent.
+12. Soft landing on grass: belly down and forepaws forward; fur spreads only 5-8%, no pancake squash, closed content eyes.
+13. Small settle after landing, chin lowering toward front paws; no visible bounce.
+14. Fully asleep lying down, chin on paws, eyes closed, tail resting beside body.
+15. Sleeping inhale: essentially identical to 14 except upper back/chest rises subtly, chin and paws fixed.
+16. Waking: both eyes half-open, head gently lifting, ears relaxed without a huge asymmetrical grin.
+17. Awake lying pose, head up a little, front paws extend slightly in preparation to get up.
+18. Modest short dog stretch: chest slightly low and hindquarters a little raised, natural comfortable curve. No extreme long bow or tail thrust.
+19. Releases the short stretch, shoulders lifting, body nearly halfway up.
+20. Pushes up through planted forepaws, rear knees unfolding, natural transfer of weight.
+21. Standing normally on all FOUR legs, gentle expression, relaxed curled tail, no tall overshoot.
+22. Hips lower into a sit, front paws stay planted, head remains steady.
+23. Small soft seated settle, chest fur relaxes; only 3% compression, no bounce.
+24. Returns to the SAME neutral seated head/face/body as 1.
+
+Preserve personality through subtle eyelids, natural breathing, gentle weight and relaxed expression. Calmer than the supplied sheet, more alive than a rigid model sheet. In particular the idle has ZERO head angle or neck height change. Return only the transparent 6-by-4 sprite sheet.
+
+## Earlier expressive revision prompt
+
+Built-in Imagegen created `expressive-sprites.png` using `samoyed-sprites.png` as the character reference. The user requested classic squash-and-stretch acting, allowing deliberate off-model poses.
+
+Use case: stylized-concept. Asset type: transparent production pixel-art animation sprite sheet, 24 storytelling KEY POSES. Input image 1 is a reference ONLY for the Samoyed puppy's recognizable identity and colors, NOT for stiff model-sheet posture. Create a new six-column by four-row sheet of the same original puppy animated with the charm of classic hand-drawn feature animation: anticipation, strong line of action, squash and stretch, expressive eyes and brows, overlapping ears and tail, moving through arcs, a sense of weight and appealing comic exaggeration. The previous sheet is too stiff and restrained. Make this noticeably more alive, warm, sleepy, floppy and playful.
+
+Keep recognizable fluffy WHITE Samoyed puppy, black nose, soft black eyes, dark navy collar and pale periwinkle fur shadows. Chunky clean pixel art, crisply clustered square pixels, limited colors; do not use the reference's fine noisy/painterly grain. Expressions and silhouettes should be readable when the sprite is only 90 pixels tall. The puppy MAY go off model for the action: stretch the torso and muzzle during yawn, squash the fluff into a wide pancake on landing, let ears and tail lag and flop. Those deliberate shape changes should tell the story. Preserve approximate visual mass, not rigid measurements. Do NOT draw 24 same-sized seated portraits.
+
+Composition and technical output: exactly SIX equal SQUARE cells per row and FOUR rows, overall 3:2 canvas. One whole dog per cell, pose sequence left to right, top to bottom. Actual transparent alpha background with alpha=0 outside the dogs. No scenery, grass, painted shadows, text, sleep letters, grid, labels, numbers, motion trails or extra characters. Clean empty space around each sprite, no haze, specks, fringe, checkerboard or background gradient. Head and body stay within each cell with safe margins. Ground-contact paws around 90% of cell height. Neutral dog about 72% of cell height, leaving room for tall yawn/standing overshoot. Same fixed front/three-quarter camera. Lying poses stay low, rather than being enlarged to fill the cell. Back of body and fluffy tail toward viewer's left, face toward viewer's right/front, matching reference.
+
+POSES (24 total):
+1. Neutral appealing seated pose, bright eyes, soft smile, relaxed fluffy tail curled to left.
+2. Cheerful idle inhale: round chest lifts, head tilts a little, tail swishes outward with a soft S-curve. Pose has life, not just recolored fur.
+3. Happy slow blink with closed curved eyes; chin tilts slightly, ears relaxed, tail comes around after the body.
+4. Drowsy: heavy drooping eyelids, head droops to one side, shoulders sag, ears flop slightly.
+5. Yawn ANTICIPATION: puppy curls inward and squashes its torso a little, chin tucked, eyelids squeeze shut, little closed-mouth inhale, tail tucks.
+6. Yawn opening: chest starts to arch up, neck lengthens, head tips back, mouth opens; ears beginning to lag downward.
+7. BIG YAWN STRETCH: comically tall elongated torso and neck, head tipped back, eyes shut, mouth wide in a tall dark oval with clearly PINK tongue, forepaws stretch slightly forward; expressive natural puppy yawn. Maintain cuteness and fluff, not a scream.
+8. Yawn FOLLOW-THROUGH: body relaxing but muzzle still open smaller; head and ears follow an arc forward, floppy tail lags behind.
+9. Sleepy EXHALE: puppy sags into a round short soft sit, head tilted forward, half-closed eyes, ears low, little content smile.
+10. Lie-down ANTICIPATION: shoulders roll forward over planted front paws, rump briefly up, face looking drowsily at the grass, compressing before the drop.
+11. DOWNWARD STRETCH: body elongated diagonally forward/down, forelegs folding, head moving toward paws, rear still slightly high, ears and tail trailing upward a little. A short fast transitional drawing.
+12. PLOP IMPACT: clearly WIDER and SHORTER pancake of fluffy puppy against the ground, belly and rump down, forepaws forward, cheeks softly squashed, closed eyes, floppy ears spread outward, tail flops sideways. An adorable soft heavy landing, not a perfectly rigid lying portrait.
+13. REBOUND: a small rounded recovery from the squash, chin lifting a little, ears/tail settling a beat later. Softness, not a large jump or airborne bounce.
+14. Fully asleep: puppy curled comfortably low, chin ON front paws, peaceful CLOSED eyes, tail snug against its body, ears relaxed.
+15. Sleep INHALE: same restful position but fluffy belly/back rises subtly with breath, face remains restful on paws. Much quieter than yawn/plop.
+16. Waking: head lifts with one eye open and one still sleepy, one ear perked while the other droops. A charming asymmetrical sleepy expression.
+17. Ready to stretch: head up, front paws reach farther forward, shoulders low, hindquarters starting to rise, soft sleepy smile.
+18. Deep morning PLAY BOW STRETCH: both front paws extended forward on ground, chest LOW near grass, hips HIGH, hind legs straightening, back long curved arc, fluffy tail curling upward; head low between paws, eyes happily shut. This must be a distinct dog stretch, not a seated portrait.
+19. Stretch RELEASE: chest lifts and hindquarters relax, spine returning through a gentle curve, ears and tail follow with delay, both eyes opening.
+20. Rising: front paws planted, shoulders moving up and forward, rear knees unfolding beneath the body; a soft curved line of action between bow and standing.
+21. Standing OVERSHOOT: puppy reaches a little tall and proud on all FOUR paws, neck long, bright face, tail lifted, ears perked. A slight upward stretch, not a jump.
+22. Sitting DESCENT: hips tuck under and lower, front legs stay planted, fluffy tail trails outward, head still a little high from standing.
+23. Seated SQUASH: rump lands softly, torso short and round, cheeks and chest fluff spread slightly, ears dipping after the body, eyes gently closed. Smaller squash than plop.
+24. Settle back into frame 1's neutral seated design, open eyes and warm smile, ears and tail catching up.
+
+Make the story emotionally readable and fluid through strong expressive drawings. Exaggeration and appealing deformation ARE DESIRED, especially frames 5-9, 11-13, 18 and 21-23. Crisp pixels, clean transparent silhouettes. Return only the 6-by-4 transparent sheet.
+
+### Expressive sheet cleanup prompt
+
+Use case: precise-object-edit. Edit target: this 6-column by 4-row 24-frame expressive Samoyed sprite sheet. Preserve every expressive pose and its ordered role: head tilt, droopy sleepy face, curled yawn anticipation, tall wide-mouth yawn, floppy ears, broad pancake plop, rebound, restful nap, asymmetrical wake, high-rump low-chest play bow, standing overshoot, soft seated squash. Preserve pixel colors, collar, fluff, character identity and the intended squash/stretch exaggeration. Do NOT make the poses rigid or less expressive.
+Fix ONLY sheet extraction defects: some tails or tiny white fragments cross the boundaries between equal square cells. Every cell must contain exactly ONE clean complete dog silhouette, with no disconnected pixels or any fragments of neighboring dogs. Each of the 24 cells must have a completely TRANSPARENT safe border at least 10 pixels wide on all four sides. If a tail or tall ear would touch a cell edge, move that WHOLE dog slightly inward or reduce that whole pose slightly to fit; do not crop or amputate the tail, ears or paws. In particular clear tiny white slivers along cell edges around the high-rump/downward stretch and bow frames. Maintain ground baseline alignment and physical size as far as fitting allows; preserve exaggerated shape changes.
+Actual alpha 0 transparent canvas outside each dog, including all gaps and safe borders. Opaque crisp pixel dog, no haze/halo, no background/checkerboard, no labels or grid lines. Exactly 6 equal square cells across, 4 rows, same 3:2 canvas dimensions. No new elements. Return only the cleaned transparent expressive sheet.
+
+## Earlier consistent character revision prompt
 
 Built-in Imagegen generated `samoyed-sprites.png` using `sleep-sprites.png` as the identity reference, with real transparent output:
 

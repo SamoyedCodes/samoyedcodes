@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="./assets/samoyed-banner.png" />
-    <img src="./assets/samoyed-banner.gif" alt="SamoyedCodes — Hey, I'm Ben. A white pixel-art Samoyed yawns, plops onto the grass for a nap, wakes and stands, then returns to its gentle idle among daisies and twinkling stars." width="100%" />
+    <img src="./assets/samoyed-banner.gif" alt="SamoyedCodes — Hey, I'm Ben. A relaxed white pixel-art Samoyed blinks, yawns, settles onto the grass for a nap, and wakes with a short stretch before returning to idle among daisies and twinkling stars." width="100%" />
   </picture>
 </p>
 
