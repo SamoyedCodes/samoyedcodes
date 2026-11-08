@@ -1,6 +1,9 @@
 name: Generate snake
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
@@ -13,15 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # Night Owl colors, matching the theme=nightowl stats cards
+      # Match the Samoyed banner: midnight navy, a gold snake, and blue dots.
       - uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg?color_snake=#c792ea&color_dots=#0b2942,#285564,#458286,#62aea8,#7fdbca
+            dist/github-snake.svg?color_snake=#ffdc8a&color_dots=#141e33,#27395a,#405a7d,#657da3,#9bb7cf
 
       # snk's SVG output has a transparent background (color_background only applies to GIFs)
-      - run: sudo sed -i 's/<svg /<svg style="background:#011627" /' dist/github-snake.svg
+      - run: sudo sed -i 's/<svg /<svg style="background:#0d1117" /' dist/github-snake.svg
 
       - uses: crazy-max/ghaction-github-pages@v4
         with:
