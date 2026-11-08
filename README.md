@@ -19,7 +19,7 @@
 
 <h2><img src="./assets/pixel-samoyed.svg" alt="" width="24" height="24" />About me</h2>
 
-I'm Ben. I build things to fix problems I actually have, from a bot that handles internship applications to a sensor that tells me when the laundry is done.
+I'm Ben, an undergraduate at NUS studying Data Science, Economics & Chemistry. I build things to fix problems I actually have, from a bot that handles internship applications to a sensor that tells me when the laundry is done.
 
 Most of my work is in Python and TypeScript, with some C++ when hardware gets involved.
 
