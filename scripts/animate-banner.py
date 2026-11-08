@@ -12,59 +12,54 @@ assert background.width == background.height * 3, "Expected a 3:1 background"
 
 background = background.resize((1200, 400), Image.Resampling.NEAREST)
 
-
-def load_sprites(filename, rows):
-    sheet = Image.open(root / "assets/animation" / filename).convert("RGBA")
-    assert abs(sheet.width * rows - sheet.height * 4) <= 4, "Unexpected sprite grid"
-    sprites = []
-    for index in range(4 * rows):
-        col, row = index % 4, index // 4
-        cell = sheet.crop(
-            (
-                round(col * sheet.width / 4),
-                round(row * sheet.height / rows),
-                round((col + 1) * sheet.width / 4),
-                round((row + 1) * sheet.height / rows),
-            )
+sheet = Image.open(root / "assets/animation/samoyed-sprites.png").convert("RGBA")
+assert abs(sheet.width * 4 - sheet.height * 6) <= 6, "Expected a 6-by-4 sprite grid"
+sprites = []
+for index in range(24):
+    col, row = index % 6, index // 6
+    cell = sheet.crop(
+        (
+            round(col * sheet.width / 6),
+            round(row * sheet.height / 4),
+            round((col + 1) * sheet.width / 6),
+            round((row + 1) * sheet.height / 4),
         )
-        # GIF uses binary transparency; drop faint matte pixels at the sprite edges.
-        cell.putalpha(cell.getchannel("A").point(lambda value: 255 if value >= 240 else 0))
-        assert cell.getbbox(), f"{filename}: sprite {index} is empty"
-        sprites.append(cell.resize((332, 332), Image.Resampling.NEAREST))
-    return sprites
+    )
+    # GIF uses binary transparency; drop faint matte pixels at the sprite edges.
+    cell.putalpha(cell.getchannel("A").point(lambda value: 255 if value >= 240 else 0))
+    assert cell.getbbox(), f"Sprite {index} is empty"
+    sprites.append(cell.resize((310, 310), Image.Resampling.NEAREST))
 
-
-idle = load_sprites("idle-sprites.png", 2)
-sleep = load_sprites("sleep-sprites.png", 4)
-ground = 69 + idle[0].getbbox()[3]
-# Align both sheets at the neutral front paw, then keep every new pose grounded.
-sleep_x = 784 + idle[0].getbbox()[2] - sleep[0].getbbox()[2]
-assert sleep[9].getbbox()[3] - sleep[9].getbbox()[1] < 0.65 * (
-    sleep[0].getbbox()[3] - sleep[0].getbbox()[1]
+ground = 369
+sprite_x = 1046 - sprites[0].getbbox()[2]
+assert sprites[13].getbbox()[3] - sprites[13].getbbox()[1] < 0.65 * (
+    sprites[0].getbbox()[3] - sprites[0].getbbox()[1]
 ), "Sleeping dog must lie down, not just close its eyes"
 yawn = sum(
     a == 255 and r > 1.4 * g and r > 1.1 * b
-    for r, g, b, a in sleep[3].crop((145, 85, 235, 160)).getdata()
+    for r, g, b, a in sprites[6].crop((120, 85, 220, 170)).getdata()
 )
 assert yawn > 30, "Missing pink tongue in the open yawn"
+# Keep the rise readable instead of replacing a low silhouette with a tall one.
+rise_tops = [ground - (sprite.getbbox()[3] - sprite.getbbox()[1]) for sprite in sprites[16:21]]
+assert all(abs(a - b) <= 40 for a, b in zip(rise_tops, rise_tops[1:])), "Missing rise intermediate"
 
-cycle = (0, 1, 2, 3, 7, 1, 2, 3)
-timeline = [("idle", cycle[index % 8], 200) for index in range(20)]
-timeline[13:15] = [("idle", 4, 200), ("idle", 5, 200)]
+timeline = [(index % 2, 200) for index in range(18)]
+timeline[12:14] = [(2, 100), (3, 200), (2, 100)]
 timeline += [
-    ("sleep", 1, 500),  # Heavy eyelids.
-    ("sleep", 2, 250), ("sleep", 3, 700), ("sleep", 4, 350),  # Yawn.
-    ("sleep", 5, 150), ("sleep", 6, 150), ("sleep", 7, 150),
-    ("sleep", 8, 250), ("sleep", 9, 500),  # Fold paws, plop, chin down.
+    (4, 500),  # Heavy eyelids.
+    (5, 250), (6, 650), (7, 350),  # Yawn.
+    (8, 180), (9, 150), (10, 100), (11, 120), (12, 250),  # Drop, plop, settle.
+    (13, 500),
 ]
-timeline += [("sleep", (9, 9, 10, 10, 10, 9, 9, 9)[index % 8], 250) for index in range(16)]
+timeline += [((13, 13, 14, 14, 14, 13, 13, 13)[index % 8], 250) for index in range(16)]
 timeline += [
-    ("sleep", 11, 350), ("sleep", 12, 300), ("sleep", 13, 200),
-    ("sleep", 14, 550), ("sleep", 15, 300),  # Wake, push up, stand, sit.
+    (15, 350), (16, 250), (17, 220), (18, 220), (19, 180),  # Shift weight, lift hips.
+    (20, 500), (21, 200), (22, 180),  # Stand, then lower into the original sit.
 ]
-timeline += [("idle", cycle[index % 8], 200) for index in range(16)]
-timeline.append(("idle", 0, 100))
-total_duration = sum(duration for _, _, duration in timeline)
+timeline += [(index % 2, 200) for index in range(15)]
+timeline += [(0, 150), (0, 100)]
+total_duration = sum(duration for _, duration in timeline)
 assert total_duration == 16_000
 
 stars = []
@@ -76,9 +71,9 @@ for x, y in ((106, 45), (560, 44), (773, 40), (893, 46), (991, 41), (1128, 113))
 
 frames = []
 elapsed = 0
-for bank, pose, duration in timeline:
+for pose, duration in timeline:
     # The tiny background motion needs fewer updates than the character poses.
-    phase = math.tau * round(32 * elapsed / (total_duration - timeline[-1][2])) / 32
+    phase = math.tau * round(32 * elapsed / (total_duration - timeline[-1][1])) / 32
     frame = background.copy()
     # Shift the meadow in small pixel steps while keeping the lettering fixed.
     for y in range(236, 400, 4):
@@ -89,8 +84,8 @@ for bank, pose, duration in timeline:
         brightness = 0.65 + 0.35 * (1 + math.cos(phase + number)) / 2
         twinkle = ImageEnhance.Brightness(patch).enhance(brightness)
         frame.paste(twinkle, box[:2], mask)
-    sprite = idle[pose] if bank == "idle" else sleep[pose]
-    position = (784, 69) if bank == "idle" else (sleep_x, ground - sprite.getbbox()[3])
+    sprite = sprites[pose]
+    position = (sprite_x, ground - sprite.getbbox()[3])
     assert position[0] + sprite.getbbox()[0] >= 780, "Dog overlaps the lettering"
     assert position[0] + sprite.getbbox()[2] <= 1200, "Dog leaves the banner"
     frame.paste(sprite, position, sprite)
@@ -120,7 +115,7 @@ frames[0].save(
     output,
     save_all=True,
     append_images=frames[1:],
-    duration=[duration for _, _, duration in timeline],
+    duration=[duration for _, duration in timeline],
     loop=0,
     disposal=1,
     optimize=True,

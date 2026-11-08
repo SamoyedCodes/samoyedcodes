@@ -1,14 +1,52 @@
 # Animated Samoyed banner
 
-The README uses `../samoyed-banner.gif`: a 1200 × 400 GIF that loops every 16 seconds. The puppy starts with its breathing, tail movement, and blink; gets sleepy and yawns; folds its paws and plops down; naps for 4.5 seconds with gentle breathing; wakes, stands on all four legs, and sits back into the original idle. The meadow sways and the stars twinkle at a lower update rate to keep the file below 3MB. The lettering stays still. The first and last frames match.
+The README uses `../samoyed-banner.gif`: a 1200 × 400 GIF that loops every 16 seconds. The puppy starts with its breathing, tail movement, and blink; gets sleepy and yawns; folds its paws and plops down; naps for 4.5 seconds with gentle breathing; wakes, shifts its weight onto the front paws, lifts its hips into a four-legged stand, and settles back into the same idle drawing. The meadow sways and the stars twinkle at a lower update rate to keep the file below 3MB. The lettering stays still. The first and last frames match.
 
 Readers with `prefers-reduced-motion: reduce` get the original `../samoyed-banner.png` through the README's `<picture>` element.
 
-The background and animation poses were created with the built-in Imagegen tool using the original banner as the reference. `background.png` is the clean background, and `idle-sprites.png` contains eight poses in a four-column, two-row grid. `sleep-sprites.png` extends the same character with sixteen poses in a four-column, four-row grid. The faint alpha matte is quantized to binary transparency when composing the GIF. Both sheets align at the neutral front paw; sleep poses share a fixed ground baseline.
+The background and animation poses were created with the built-in Imagegen tool using the original banner as the reference. `background.png` is the clean background. The active `samoyed-sprites.png` has 24 keyframes in a six-column, four-row grid, covering idle through sleep and recovery in one consistent character family. The faint alpha matte is quantized to binary transparency when composing the GIF. Every pose shares the same ground baseline. The original `idle-sprites.png` and `sleep-sprites.png` remain as artwork references; the generator no longer switches between them.
 
-To rebuild, run `python3 scripts/animate-banner.py` from the repository root with Pillow installed. The script checks both grids, a visible yawn tongue, the low sleeping silhouette, visible blink, character bounds, stationary lettering, loop seam, decoded GIF duration, and file size. One shared palette prevents color flicker and reserves a pink entry for the yawn. No API calls or credentials are needed to rebuild.
+To rebuild, run `python3 scripts/animate-banner.py` from the repository root with Pillow installed. The script checks the grid, a visible yawn tongue, the low sleeping silhouette, intermediate rise silhouettes, visible blink, character bounds, stationary lettering, loop seam, decoded GIF duration, and file size. One shared palette prevents color flicker and reserves a pink entry for the yawn. No API calls or credentials are needed to rebuild.
 
-## Background prompt
+## Consistent character revision prompt
+
+Built-in Imagegen generated `samoyed-sprites.png` using `sleep-sprites.png` as the identity reference, with real transparent output:
+
+Use case: identity-preserve. Asset type: one production pixel-art Samoyed animation sprite sheet, REAL TRANSPARENT ALPHA background. Input image 1 is reference ONLY for the white puppy's exact identity, palette, collar, fur shapes and established poses. IGNORE its noisy matte completely. Build ONE CONSISTENT character family: the same young fluffy Samoyed in every frame, never alternating between skinny and round bodies or different face shapes. Preserve the cute ivory fur, cool periwinkle shadows, triangular ears, black eyes/nose, friendly muzzle and navy collar with square buckle. It is a pixel-art sprite, not a rendered painting. Hard square pixel clusters, stable fur texture, limited palette, NO fine grain or random scattered pixels.
+
+OUTPUT: exactly TWENTY-FOUR square cells in SIX COLUMNS by FOUR ROWS. Overall canvas aspect ratio 3:2. No labels, numbers, lines, scenery, text or ground shadow. One WHOLE dog per cell, fully within that cell. Clean alpha 0 everywhere outside the silhouette, no haze, aura, checkerboard, speckles, colored fringes or translucent background. Fur opaque. Leave a little transparent margin on all sides.
+
+REGISTRATION: lock the same physical dog scale, head size, muzzle proportions, collar and camera angle in all 24 cells. Ground-contact baseline EXACTLY 90% down EACH cell, never drifting. Neutral seated height 80% of cell. Keep the front paws planted at the same horizontal location for standing/sitting/lying transitions. The dog's hindquarters and fluffy tail extend left. Lying sprites are LOWER in the cell, not enlarged or recentered to fill it. All front-facing or the same very slight three-quarter front. No mirrored dogs. First and last neutral seated frames MUST be identical. Frames 1-4 form a subtle idle with fixed facial geometry (the nose and collar do not shift sideways).
+
+Read LEFT TO RIGHT, TOP TO BOTTOM:
+1. Neutral seated puppy, open round eyes, gentle smile. Matches the reference puppy's relaxed seated design.
+2. The EXACT same seated pixels except a tiny chest inhale and tail moving 1-2 pixel clusters, face/head/paws fixed.
+3. Same seated puppy beginning a blink, eyelids halfway down. Everything except eyelids identical to frame 1.
+4. Same seated puppy with both eyes fully closed in a blink, mouth still the same gentle closed smile. Everything except eyelids identical to frame 1.
+5. Getting sleepy: heavy half-closed eyes and chin tipped down slightly, shoulders beginning to relax. Same head/body width as frame 1.
+6. Yawn beginning: eyes closed, mouth a small vertical oval.
+7. Peak yawn: eyes softly squeezed shut, head tipped just slightly back, mouth opens wide with a small clearly PINK tongue. Natural baby dog yawn, not a scream.
+8. Yawn ending: mouth closes, eyes stay sleepy, body softly relaxes.
+9. Anticipation for lie-down: body leans slightly forward over the FRONT PAWS; front elbows begin bending, rump still high.
+10. Lowering: elbows more bent, chest halfway down, rump beginning to lower. Keep paws planted.
+11. Just before plop: chest and belly close to ground, rump almost down, head still up. Clear intermediary between frames 10 and 12.
+12. Cute soft PLOP landing: belly and hindquarters down, front paws stretched forward, head up, a small squash in the fluffy torso, same-sized head.
+13. Settle: body relaxes out of the small squash, chin lowers halfway to front paws, eyes heavy.
+14. Fully asleep: chin ON both front paws, eyes peacefully closed, fluffy tail beside body.
+15. Sleeping inhale: EXACT same sleeping pixels as frame 14, except a tiny upper-back/chest expansion by one pixel cluster. Chin, face, ears and paws fixed.
+16. Wake: still lying, eyes half open, chin just lifting off paws.
+17. Awake prone: head lifted, front paws planted below shoulders, body still on ground.
+18. FIRST RISE intermediate: chest shifts FORWARD over planted front paws, elbows bent, shoulders begin to lift. Hindquarters remain low. Natural weight transfer, not a seated jump.
+19. SECOND RISE intermediate: front legs now almost straight, chest raised, rear knees tucked UNDER the body; hips are halfway lifted. No floating paws; same torso length.
+20. THIRD RISE intermediate: hips nearly upright and rear legs extending, shoulders at almost standing height. A small remaining movement to frame 21, not a sudden large rise.
+21. Fully standing on all FOUR legs. Clear natural puppy anatomy, head cheerful, curled fluffy tail to left. Same head size as seated and sleeping frames.
+22. SITTING DOWN intermediate: front paws stay planted and front legs straight; hind knees bend, hips beginning to lower. Head stays close to the same height.
+23. Almost seated: rump nearly touches ground, rear legs folded, front legs still straight, body easing back into frame 1 proportions.
+24. EXACT COPY of frame 1 neutral seated pose, for seamless return to idle.
+
+Critical quality goal: readable physical progression, especially frames 17-23. Show chest-forward push, rear knee tuck, hip lift, four-leg stand, then controlled hip lowering; don't replace these steps with arbitrary seated portraits. The same body moves through the entire sequence. Avoid changing fur patterns or head size between drawings. Output only the clean transparent 6-by-4 sheet.
+
+## Earlier background prompt
 
 Use case: precise-object-edit. Input image 1 is the edit target: the existing SamoyedCodes banner.
 Create a clean animation background plate by removing ONLY the white Samoyed puppy and its collar on the right. Fill exactly the space formerly occupied by the dog with matching midnight navy sky, low blue distant hills, and the existing meadow floor, as though the dog had never been there. Keep all nearby daisies, grass, moon, stars, colors, pixel clusters and every other detail in place.
