@@ -17,13 +17,13 @@
   <a href="#contributions">Snake</a>
 </p>
 
-<h2><a href="#about-me"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> About me</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />About me</h2>
 
 I'm Ben. I build things to fix problems I actually have, from a bot that handles internship applications to a sensor that tells me when the laundry is done.
 
 Most of my work is in Python and TypeScript, with some C++ when hardware gets involved.
 
-<h2><a href="#projects"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> Projects</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Projects</h2>
 
 ### [Intern-Bot](https://github.com/SamoyedCodes/Intern-Bot)
 
@@ -45,7 +45,7 @@ LightGBM forecasts of airport arrival capacity and delay risk for Autonomous SG 
 
 An ESP32 vibration sensor and Azure Functions dashboard that detect washing machine cycles.
 
-<h2><a href="#toolbox"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> Toolbox</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Toolbox</h2>
 
 - **Languages:** `Python` · `TypeScript` · `JavaScript` · `C++`
 - **Frontend:** `React` · `Vite` · `Tailwind CSS` · `HTML5` · `CSS3`
@@ -54,7 +54,7 @@ An ESP32 vibration sensor and Azure Functions dashboard that detect washing mach
 - **Cloud & hardware:** `Azure` · `Vercel` · `Arduino / ESP32`
 - **Tools:** `Git` · `Playwright` · `pytest` · `Vitest` · `pnpm`
 
-<h2><a href="#github-stats"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> GitHub stats</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />GitHub stats</h2>
 
 Explore my [commit history](https://github.com/search?q=author%3ASamoyedCodes&type=commits&s=committer-date&o=desc) and [repositories](https://github.com/SamoyedCodes?tab=repositories) directly on GitHub.
 
@@ -72,12 +72,12 @@ Explore my [commit history](https://github.com/search?q=author%3ASamoyedCodes&ty
 
 <sub>Pixel cards: <a href="https://github.com/BaranDev/questlog-github-stats">questlog-github-stats</a>, art by Cevdet Baran Oral.</sub>
 
-<h2><a href="#contributions"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> Contributions</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />Contributions</h2>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/SamoyedCodes/samoyedcodes/output/github-snake.svg" alt="A snake eats Ben's GitHub contribution graph." width="100%" />
 </p>
 
-<h2><a href="#more-projects"><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" /> More projects</a></h2>
+<h2><img src="./assets/pixel-paw.svg" alt="" width="24" height="24" />More projects</h2>
 
 **[Browse all my repositories →](https://github.com/SamoyedCodes?tab=repositories)**
