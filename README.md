@@ -37,12 +37,15 @@ Most of my work is in Python and TypeScript, with some C++ when hardware gets in
 <h2 id="github-stats"><img src="./assets/section-stats.svg" alt="GitHub stats" width="480" /></h2>
 
 <p align="center">
-  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/stats/observatory/night?title=Ben%27s%20Stats" alt="Ben's GitHub stats in a dark pixel-art observatory" width="49%" /></a>
-  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/streak/observatory/night?title=GitHub%20Streak&fire=themed" alt="Ben's GitHub streak in a dark pixel-art observatory" width="49%" /></a>
+  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/stats/observatory/night?title=Ben%27s%20Stats&title_color=FFDC8A&text_color=FFF4D6" alt="Ben's GitHub stats in a dark pixel-art observatory" width="100%" /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/languages/observatory/night?title=Most%20Used%20Languages" alt="Ben's top languages in a dark pixel-art observatory" width="49%" /></a>
+  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/streak/observatory/night?title=GitHub%20Streak&fire=themed&title_color=FFDC8A&text_color=FFF4D6" alt="Ben's GitHub streak in a dark pixel-art observatory" width="100%" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/BaranDev/questlog-github-stats"><img src="https://questlog.cc/SamoyedCodes/languages/observatory/night?title=Most%20Used%20Languages&title_color=FFDC8A&text_color=FFF4D6" alt="Ben's top languages in a dark pixel-art observatory" width="100%" /></a>
 </p>
 
 <h2 id="toolbox"><img src="./assets/section-toolbox.svg" alt="Toolbox" width="480" /></h2>
